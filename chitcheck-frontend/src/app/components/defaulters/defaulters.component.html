@@ -1,0 +1,189 @@
+<div class="defaulters">
+  <div class="page-header">
+    <h1 class="page-title">Defaulters</h1>
+    <nav class="breadcrumb">
+      <span class="breadcrumb-item">Home</span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item">Defaulters</span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item active">Add Defaulters</span>
+    </nav>
+  </div>
+
+  <div class="defaulters-content">
+    <div class="defaulters-tabs">
+      <button 
+        *ngFor="let tab of tabs" 
+        class="tab-button"
+        [class.active]="activeTab === tab.id"
+        (click)="setActiveTab(tab.id)">
+        {{ tab.label }}
+      </button>
+    </div>
+
+    <div class="defaulters-form-container">
+      <form [formGroup]="defaultersForm" (ngSubmit)="onSubmit()" class="defaulters-form">
+        
+        <!-- Personal Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'personal'">
+          <h3 class="section-title">Defaulters Details</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="subscriberName">Subscriber Name</label>
+              <input type="text" id="subscriberName" formControlName="subscriberName" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fatherName">Father Name / Contact Person</label>
+              <input type="text" id="fatherName" formControlName="fatherName" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="area">Area</label>
+              <input type="text" id="area" formControlName="area" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dateOfBirth">Date of Birth</label>
+              <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="form-control" placeholder="dd-mm-yyyy">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="address">Address</label>
+              <textarea id="address" formControlName="address" class="form-control" rows="4"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phoneNo">Phone No</label>
+              <input type="tel" id="phoneNo" formControlName="phoneNo" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="emailId">Email Id</label>
+              <input type="email" id="emailId" formControlName="emailId" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="introducer">Introducer</label>
+              <input type="text" id="introducer" formControlName="introducer" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nominee">Nominee</label>
+              <input type="text" id="nominee" formControlName="nominee" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="relationship">Relationship</label>
+              <input type="text" id="relationship" formControlName="relationship" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pancard">Pancard</label>
+              <input type="text" id="pancard" formControlName="pancard" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="subscriberType">Subscriber Type</label>
+              <input type="text" id="subscriberType" formControlName="subscriberType" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="aadharCard">Aadhar Card</label>
+              <input type="text" id="aadharCard" formControlName="aadharCard" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="gstNumber">GST Number</label>
+              <input type="text" id="gstNumber" formControlName="gstNumber" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="profileImage">Profile Image</label>
+              <div class="file-input-group">
+                <input type="file" id="profileImage" accept="image/*" (change)="onFileSelect($event, 'profile')" hidden>
+                <label for="profileImage" class="file-upload-btn">Choose File</label>
+                <span class="file-status">No file chosen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'group'">
+          <div class="tab-content">
+            <h3>Group Details</h3>
+            <p>Manage group information and details here.</p>
+          </div>
+        </div>
+
+        <!-- Guarantor Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'guarantor'">
+          <div class="tab-content">
+            <h3>Guarantor Details</h3>
+            <p>Manage guarantor information here.</p>
+          </div>
+        </div>
+
+        <!-- Bonds Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'bonds'">
+          <div class="tab-content">
+            <h3>Bonds Details</h3>
+            <p>Manage bonds and securities information here.</p>
+          </div>
+        </div>
+
+        <!-- Case Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'case'">
+          <div class="tab-content">
+            <h3>Case Details</h3>
+            <p>Manage legal case information here.</p>
+          </div>
+        </div>
+
+        <!-- Status Tab -->
+        <div class="form-section" *ngIf="activeTab === 'status'">
+          <div class="tab-content">
+            <h3>Status Information</h3>
+            <p>View and update status information here.</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="defaultersForm.invalid">
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

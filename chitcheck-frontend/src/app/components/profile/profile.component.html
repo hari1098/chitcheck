@@ -1,0 +1,177 @@
+<div class="profile">
+  <div class="page-header">
+    <h1 class="page-title">Profile</h1>
+    <nav class="breadcrumb">
+      <span class="breadcrumb-item">Home</span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item active">Profile</span>
+    </nav>
+  </div>
+
+  <div class="profile-content">
+    <div class="profile-tabs">
+      <button 
+        *ngFor="let tab of tabs" 
+        class="tab-button"
+        [class.active]="activeTab === tab.id"
+        (click)="setActiveTab(tab.id)">
+        {{ tab.label }}
+      </button>
+    </div>
+
+    <div class="profile-form-container">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+        
+        <!-- Profile Image Section -->
+        <div class="profile-image-section" *ngIf="activeTab === 'company'">
+          <div class="profile-image-container">
+            <div class="profile-image">
+              <div class="avatar-placeholder">
+                <span class="avatar-text">CC</span>
+              </div>
+            </div>
+            <div class="image-upload">
+              <input type="file" id="profileImage" accept="image/*" (change)="onFileSelect($event, 'profile')" hidden>
+              <label for="profileImage" class="file-upload-btn">Choose File</label>
+              <span class="file-status">No file chosen</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'company'">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="companyName">Company Name</label>
+              <input type="text" id="companyName" formControlName="companyName" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactNo">Contact No</label>
+              <input type="tel" id="contactNo" formControlName="contactNo" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Id</label>
+              <input type="email" id="email" formControlName="email" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="address">Address</label>
+              <textarea id="address" formControlName="address" class="form-control" rows="4"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactPerson">Contact Person</label>
+              <input type="text" id="contactPerson" formControlName="contactPerson" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pancard">Pancard</label>
+              <input type="text" id="pancard" formControlName="pancard" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pancardImage">Pancard Image</label>
+              <div class="file-input-group">
+                <input type="file" id="pancardImage" accept="image/*" (change)="onFileSelect($event, 'pancard')" hidden>
+                <label for="pancardImage" class="file-upload-btn">Choose File</label>
+                <span class="file-status">No file chosen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cin">CIN</label>
+              <input type="text" id="cin" formControlName="cin" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cinImage">CIN Image</label>
+              <div class="file-input-group">
+                <input type="file" id="cinImage" accept="image/*" (change)="onFileSelect($event, 'cin')" hidden>
+                <label for="cinImage" class="file-upload-btn">Choose File</label>
+                <span class="file-status">No file chosen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="gstNumber">GST Number</label>
+              <input type="text" id="gstNumber" formControlName="gstNumber" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="gstImage">Gst Image</label>
+              <div class="file-input-group">
+                <input type="file" id="gstImage" accept="image/*" (change)="onFileSelect($event, 'gst')" hidden>
+                <label for="gstImage" class="file-upload-btn">Choose File</label>
+                <span class="file-status">No file chosen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Directors Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'directors'">
+          <div class="directors-list">
+            <h3>Directors Information</h3>
+            <p>Manage company directors and their details here.</p>
+          </div>
+        </div>
+
+        <!-- Proofs Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'proofs'">
+          <div class="proofs-list">
+            <h3>Proof Documents</h3>
+            <p>Upload and manage company proof documents here.</p>
+          </div>
+        </div>
+
+        <!-- User Details Tab -->
+        <div class="form-section" *ngIf="activeTab === 'user'">
+          <div class="user-details">
+            <h3>User Information</h3>
+            <p>Manage user account details and preferences here.</p>
+          </div>
+        </div>
+
+        <!-- Status Tab -->
+        <div class="form-section" *ngIf="activeTab === 'status'">
+          <div class="status-info">
+            <h3>Account Status</h3>
+            <p>View account status and verification information here.</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© Copyright <strong>ChitCheck</strong>. All Rights Reserved</p>
+  </div>
+</div>

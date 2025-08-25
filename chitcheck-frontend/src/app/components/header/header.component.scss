@@ -1,0 +1,76 @@
+.header {
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e6ed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .header-left {
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 8px;
+
+      .hamburger {
+        width: 20px;
+        height: 2px;
+        background-color: #666;
+        transition: all 0.3s ease;
+      }
+
+      &:hover .hamburger {
+        background-color: #007bff;
+      }
+    }
+  }
+
+  .header-right {
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #f8f9fa;
+      }
+
+      .user-avatar {
+        width: 32px;
+        height: 32px;
+        background-color: #007bff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .avatar-text {
+          color: white;
+          font-weight: 600;
+          font-size: 12px;
+        }
+      }
+
+      .username {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .dropdown-arrow {
+        font-size: 10px;
+        color: #666;
+      }
+    }
+  }
+}

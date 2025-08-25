@@ -1,0 +1,89 @@
+<div class="chit-check">
+  <div class="page-header">
+    <h1 class="page-title">Chit Check</h1>
+    <nav class="breadcrumb">
+      <span class="breadcrumb-item">Home</span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item active">Chit Check</span>
+    </nav>
+  </div>
+
+  <div class="chit-check-content">
+    <div class="search-section">
+      <div class="search-form">
+        <div class="search-row">
+          <div class="search-group">
+            <label for="searchName">Search by Name</label>
+            <input type="text" id="searchName" [(ngModel)]="searchCriteria.name" class="form-control" placeholder="Enter name">
+          </div>
+          <div class="search-group">
+            <label for="searchPan">Search by PAN</label>
+            <input type="text" id="searchPan" [(ngModel)]="searchCriteria.pan" class="form-control" placeholder="Enter PAN">
+          </div>
+          <div class="search-group">
+            <label for="searchAadhar">Search by Aadhar</label>
+            <input type="text" id="searchAadhar" [(ngModel)]="searchCriteria.aadhar" class="form-control" placeholder="Enter Aadhar">
+          </div>
+          <div class="search-group">
+            <label for="searchMobile">Search by Mobile</label>
+            <input type="text" id="searchMobile" [(ngModel)]="searchCriteria.mobile" class="form-control" placeholder="Enter mobile">
+          </div>
+        </div>
+        <div class="search-actions">
+          <button type="button" class="btn btn-primary" (click)="onSearch()">Search</button>
+          <button type="button" class="btn btn-secondary" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-section" *ngIf="searchResults.length > 0">
+      <h3 class="results-title">Search Results</h3>
+      <div class="results-table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>PAN Card</th>
+              <th>Aadhar Card</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of searchResults">
+              <td>{{ result.name }}</td>
+              <td>{{ result.panCard }}</td>
+              <td>{{ result.aadharCard }}</td>
+              <td>{{ result.mobile }}</td>
+              <td>{{ result.email }}</td>
+              <td>
+                <span class="status-badge" [class]="'status-' + result.status.toLowerCase()">
+                  {{ result.status }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-info" (click)="viewDetails(result)">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="no-results" *ngIf="searchPerformed && searchResults.length === 0">
+      <div class="no-results-content">
+        <h3>No Results Found</h3>
+        <p>No records match your search criteria. Please try different search terms.</p>
+      </div>
+    </div>
+
+    <div class="welcome-message" *ngIf="!searchPerformed">
+      <div class="welcome-content">
+        <h3>Welcome to Chit Check</h3>
+        <p>Use the search form above to find defaulter information by name, PAN, Aadhar, or mobile number.</p>
+      </div>
+    </div>
+  </div>
+</div>
