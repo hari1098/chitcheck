@@ -7,6 +7,7 @@
   justify-content: space-between;
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 
   .header-left {
     .menu-toggle {
@@ -17,12 +18,19 @@
       flex-direction: column;
       gap: 3px;
       padding: 8px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #f8f9fa;
+      }
 
       .hamburger {
         width: 20px;
         height: 2px;
         background-color: #666;
         transition: all 0.3s ease;
+        border-radius: 1px;
       }
 
       &:hover .hamburger {
@@ -32,6 +40,8 @@
   }
 
   .header-right {
+    position: relative;
+
     .user-profile {
       display: flex;
       align-items: center;
@@ -48,11 +58,12 @@
       .user-avatar {
         width: 32px;
         height: 32px;
-        background-color: #007bff;
+        background: linear-gradient(135deg, #007bff, #0056b3);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
 
         .avatar-text {
           color: white;
@@ -70,6 +81,69 @@
       .dropdown-arrow {
         font-size: 10px;
         color: #666;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    .user-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid #e0e6ed;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      min-width: 150px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .menu-item {
+        display: block;
+        padding: 10px 15px;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #f8f9fa;
+          color: #007bff;
+        }
+
+        &:first-child {
+          border-radius: 6px 6px 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 6px 6px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 15px;
+    
+    .header-right {
+      .user-profile {
+        .username {
+          display: none;
+        }
       }
     }
   }

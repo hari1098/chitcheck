@@ -60,6 +60,7 @@ export class ChitCheckComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // Initialize component
   }
 
   onSearch(): void {

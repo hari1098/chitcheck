@@ -1,6 +1,6 @@
 <div class="header">
   <div class="header-left">
-    <button class="menu-toggle">
+    <button class="menu-toggle" (click)="toggleMenu()">
       <span class="hamburger"></span>
       <span class="hamburger"></span>
       <span class="hamburger"></span>
@@ -8,12 +8,18 @@
   </div>
   
   <div class="header-right">
-    <div class="user-profile">
+    <div class="user-profile" (click)="toggleUserMenu()">
       <div class="user-avatar">
         <span class="avatar-text">CC</span>
       </div>
       <span class="username">mkumar</span>
-      <i class="dropdown-arrow">▼</i>
+      <div class="dropdown-arrow">▼</div>
+    </div>
+    
+    <div class="user-menu" [class.show]="showUserMenu">
+      <a href="#" class="menu-item">Profile</a>
+      <a href="#" class="menu-item">Settings</a>
+      <a href="#" class="menu-item">Logout</a>
     </div>
   </div>
 </div>

@@ -39,6 +39,7 @@
       display: flex;
       border-bottom: 1px solid #e0e6ed;
       background-color: #f8f9fa;
+      flex-wrap: wrap;
 
       .tab-button {
         padding: 15px 20px;
@@ -50,6 +51,8 @@
         color: #666;
         transition: all 0.3s ease;
         border-bottom: 3px solid transparent;
+        flex: 1;
+        min-width: 120px;
 
         &:hover {
           background-color: #e9ecef;
@@ -81,12 +84,13 @@
               .avatar-placeholder {
                 width: 80px;
                 height: 80px;
-                background-color: #007bff;
+                background: linear-gradient(135deg, #007bff, #0056b3);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 margin: 0 auto;
+                box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 
                 .avatar-text {
                   color: white;
@@ -157,6 +161,10 @@
                   border-color: #007bff;
                   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
                 }
+
+                &::placeholder {
+                  color: #999;
+                }
               }
 
               .file-input-group {
@@ -186,10 +194,7 @@
             }
           }
 
-          .directors-list,
-          .proofs-list,
-          .user-details,
-          .status-info {
+          .tab-content {
             text-align: center;
             padding: 40px 20px;
 
@@ -261,11 +266,9 @@
   .profile {
     .profile-content {
       .profile-tabs {
-        flex-wrap: wrap;
-
         .tab-button {
-          flex: 1;
-          min-width: 120px;
+          padding: 12px 15px;
+          font-size: 12px;
         }
       }
 

@@ -39,16 +39,33 @@ export class DefaultersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Initialize component
   }
 
   setActiveTab(tabId: string): void {
     this.activeTab = tabId;
   }
 
+  getTabTitle(): string {
+    const tab = this.tabs.find(t => t.id === this.activeTab);
+    return tab ? tab.label : '';
+  }
+
+  getTabDescription(): string {
+    const descriptions: { [key: string]: string } = {
+      'group': 'Manage group information and details here.',
+      'guarantor': 'Manage guarantor information here.',
+      'bonds': 'Manage bonds and securities information here.',
+      'case': 'Manage legal case information here.',
+      'status': 'View and update status information here.'
+    };
+    return descriptions[this.activeTab] || '';
+  }
+
   onFileSelect(event: any, type: string): void {
     const file = event.target.files[0];
     if (file) {
-      const fileStatus = event.target.parentElement.querySelector('.file-status');
+      const fileStatus = event.target.parentElement?.querySelector('.file-status');
       if (fileStatus) {
         fileStatus.textContent = file.name;
       }

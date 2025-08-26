@@ -17,3 +17,15 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+    
+    .main-content {
+      .content-area {
+        padding: 15px;
+      }
+    }
+  }
+}

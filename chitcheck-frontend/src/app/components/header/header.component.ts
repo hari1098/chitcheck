@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  showUserMenu = false;
 
+  constructor() { }
+
+  toggleMenu(): void {
+    // Toggle mobile menu functionality
+    console.log('Menu toggled');
+  }
+
+  toggleUserMenu(): void {
+    this.showUserMenu = !this.showUserMenu;
+  }
 }

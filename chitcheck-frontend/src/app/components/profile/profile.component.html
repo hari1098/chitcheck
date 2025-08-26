@@ -22,24 +22,24 @@
     <div class="profile-form-container">
       <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
         
-        <!-- Profile Image Section -->
-        <div class="profile-image-section" *ngIf="activeTab === 'company'">
-          <div class="profile-image-container">
-            <div class="profile-image">
-              <div class="avatar-placeholder">
-                <span class="avatar-text">CC</span>
-              </div>
-            </div>
-            <div class="image-upload">
-              <input type="file" id="profileImage" accept="image/*" (change)="onFileSelect($event, 'profile')" hidden>
-              <label for="profileImage" class="file-upload-btn">Choose File</label>
-              <span class="file-status">No file chosen</span>
-            </div>
-          </div>
-        </div>
-
         <!-- Company Details Tab -->
         <div class="form-section" *ngIf="activeTab === 'company'">
+          <!-- Profile Image Section -->
+          <div class="profile-image-section">
+            <div class="profile-image-container">
+              <div class="profile-image">
+                <div class="avatar-placeholder">
+                  <span class="avatar-text">CC</span>
+                </div>
+              </div>
+              <div class="image-upload">
+                <input type="file" id="profileImage" accept="image/*" (change)="onFileSelect($event, 'profile')" hidden>
+                <label for="profileImage" class="file-upload-btn">Choose File</label>
+                <span class="file-status">No file chosen</span>
+              </div>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="companyName">Company Name</label>
@@ -130,35 +130,11 @@
           </div>
         </div>
 
-        <!-- Directors Details Tab -->
-        <div class="form-section" *ngIf="activeTab === 'directors'">
-          <div class="directors-list">
-            <h3>Directors Information</h3>
-            <p>Manage company directors and their details here.</p>
-          </div>
-        </div>
-
-        <!-- Proofs Details Tab -->
-        <div class="form-section" *ngIf="activeTab === 'proofs'">
-          <div class="proofs-list">
-            <h3>Proof Documents</h3>
-            <p>Upload and manage company proof documents here.</p>
-          </div>
-        </div>
-
-        <!-- User Details Tab -->
-        <div class="form-section" *ngIf="activeTab === 'user'">
-          <div class="user-details">
-            <h3>User Information</h3>
-            <p>Manage user account details and preferences here.</p>
-          </div>
-        </div>
-
-        <!-- Status Tab -->
-        <div class="form-section" *ngIf="activeTab === 'status'">
-          <div class="status-info">
-            <h3>Account Status</h3>
-            <p>View account status and verification information here.</p>
+        <!-- Other Tabs -->
+        <div class="form-section" *ngIf="activeTab !== 'company'">
+          <div class="tab-content">
+            <h3>{{ getTabTitle() }}</h3>
+            <p>{{ getTabDescription() }}</p>
           </div>
         </div>
 

@@ -138,43 +138,11 @@
           </div>
         </div>
 
-        <!-- Group Details Tab -->
-        <div class="form-section" *ngIf="activeTab === 'group'">
+        <!-- Other Tabs -->
+        <div class="form-section" *ngIf="activeTab !== 'personal'">
           <div class="tab-content">
-            <h3>Group Details</h3>
-            <p>Manage group information and details here.</p>
-          </div>
-        </div>
-
-        <!-- Guarantor Details Tab -->
-        <div class="form-section" *ngIf="activeTab === 'guarantor'">
-          <div class="tab-content">
-            <h3>Guarantor Details</h3>
-            <p>Manage guarantor information here.</p>
-          </div>
-        </div>
-
-        <!-- Bonds Details Tab -->
-        <div class="form-section" *ngIf="activeTab === 'bonds'">
-          <div class="tab-content">
-            <h3>Bonds Details</h3>
-            <p>Manage bonds and securities information here.</p>
-          </div>
-        </div>
-
-        <!-- Case Details Tab -->
-        <div class="form-section" *ngIf="activeTab === 'case'">
-          <div class="tab-content">
-            <h3>Case Details</h3>
-            <p>Manage legal case information here.</p>
-          </div>
-        </div>
-
-        <!-- Status Tab -->
-        <div class="form-section" *ngIf="activeTab === 'status'">
-          <div class="tab-content">
-            <h3>Status Information</h3>
-            <p>View and update status information here.</p>
+            <h3>{{ getTabTitle() }}</h3>
+            <p>{{ getTabDescription() }}</p>
           </div>
         </div>
 

@@ -32,16 +32,32 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Initialize component
   }
 
   setActiveTab(tabId: string): void {
     this.activeTab = tabId;
   }
 
+  getTabTitle(): string {
+    const tab = this.tabs.find(t => t.id === this.activeTab);
+    return tab ? tab.label : '';
+  }
+
+  getTabDescription(): string {
+    const descriptions: { [key: string]: string } = {
+      'directors': 'Manage company directors and their details here.',
+      'proofs': 'Upload and manage company proof documents here.',
+      'user': 'Manage user account details and preferences here.',
+      'status': 'View account status and verification information here.'
+    };
+    return descriptions[this.activeTab] || '';
+  }
+
   onFileSelect(event: any, type: string): void {
     const file = event.target.files[0];
     if (file) {
-      const fileStatus = event.target.parentElement.querySelector('.file-status');
+      const fileStatus = event.target.parentElement?.querySelector('.file-status');
       if (fileStatus) {
         fileStatus.textContent = file.name;
       }
